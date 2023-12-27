@@ -37,7 +37,7 @@ export const authOptions = {
     callbacks: {
         async signIn({ user, account, profile, email, credentials }) {
             if (account.type === "oauth") {
-              return await  signInWithOAuth({ account, profile })
+                return await signInWithOAuth({ account, profile })
             }
             return true
         },
@@ -50,8 +50,6 @@ export const authOptions = {
             token.user = user
             return token
         },
-
-
     }
 }
 
