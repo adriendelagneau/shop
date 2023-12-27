@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import AuthProvider from '@/components/providers/AuthProvider'
+import SmoothScrolling from '@/components/providers/LennisProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          {children}
+        <SmoothScrolling>
+            {children}
+            </SmoothScrolling>
       </AuthProvider>
       </body>
     </html>

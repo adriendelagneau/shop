@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@studio-freight/react-lenis": "^0.0.38",
     "bcryptjs": "^2.4.3",
+    "gsap": "^3.12.4",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "next": "14.0.4",
