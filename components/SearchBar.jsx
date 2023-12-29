@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter} from "next/navigation";
 import { constructUrl } from "@/utils/constructUrl";
 
 const SearchBar = ({ searchParams }) => {
@@ -12,17 +12,21 @@ const SearchBar = ({ searchParams }) => {
   const brand = searchParams?.brand || ''
   const sort = searchParams?.sort || ''
 
+  //
+  const [page, setPage] = useState(parseInt(searchParams?.page) || 1)
+
+
 
   useEffect(() => {
 
     const delayDebounce = setTimeout(() => {
 
 
-      let newUrl = constructUrl(category, brand, sort, search);
+      let newUrl = constructUrl(page, category, brand, sort, search);
       router.push(`/products${newUrl}`);
     }, 300)
     return () => clearTimeout(delayDebounce);
-  }, [search, router])
+  }, [search, router, page])
 
 
 
@@ -34,6 +38,10 @@ const SearchBar = ({ searchParams }) => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+
+ 
+<div onClick={() =>   setPage((prevPage) => prevPage +1)}>next page</div>
+ 
     </div>
   );
 };

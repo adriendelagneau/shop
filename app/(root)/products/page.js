@@ -9,7 +9,7 @@ const ProductPage = async ({searchParams}) => {
 
   const data = await getProducts(
     searchParams?.page || 1,
-    searchParams?.limit || 12,
+    searchParams?.limit || 3,
     searchParams?.search || "",
     searchParams?.category || "",
     searchParams?.brand || "",

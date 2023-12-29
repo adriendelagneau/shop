@@ -4,7 +4,7 @@ import Product from "@/lib/models/Product"
 
 
 
-export const getProducts = async (page = 1, limit = 12, search, category, brand, sort) => {
+export const getProducts = async (page = 1, limit = 3, search, category, brand, sort) => {
 
     try {
         // Build the filter object based on the provided parameters
@@ -34,7 +34,6 @@ export const getProducts = async (page = 1, limit = 12, search, category, brand,
 
         // Calculate skipCount
         const skipCount = (page - 1) * limit;
-
         // Build the sort object based on the provided sort parameter or use default sorting options
         let sortOptions = {};
         if (sort === 'priceDes') {
@@ -44,9 +43,11 @@ export const getProducts = async (page = 1, limit = 12, search, category, brand,
         } else {
             sortOptions = { createdAt: 1 }; // Default sorting by createdAt in ascending order
         }
-
+        
+      //  console.log(skipCount, "sk")
         // Use the combined filter and sort objects in the find query
         const result = await Product.find(combinedFilter).skip(skipCount).limit(limit).sort(sortOptions);
+
 
         // Calculate the total number of pages
         const totalPages = Math.ceil(result.length / limit);

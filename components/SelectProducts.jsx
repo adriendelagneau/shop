@@ -7,46 +7,45 @@ import { constructUrl } from "@/utils/constructUrl";
 
 const SelectProducts = ({ searchParams }) => {
 
-    const [category, setCategory] = useState(searchParams?.category || '');
-    const [brand, setBrand] = useState(searchParams?.brand || '');
+  const [category, setCategory] = useState(searchParams?.category || '');
+  const [brand, setBrand] = useState(searchParams?.brand || '');
   const [sort, setSort] = useState(searchParams?.sort || '');
-  const search =  searchParams?.search  || ''
+  const search = searchParams?.search || ''
+  let page = parseInt(searchParams?.page) || 1
+
   const router = useRouter()
 
 
   useEffect(() => {
     // Update the URL with the selected values
-    let newUrl = constructUrl(category, brand, sort, search);
+    let newUrl = constructUrl(page,category, brand, sort, search);
     router.push(`/products${newUrl}`);
 
-}, [category, brand, sort, router]);
+  }, [category, brand, sort, router]);
 
-    
 
-      // Options for each select
+
+  // Options for each select
   const categoryOptions = [
     { label: 'Category ', value: '' },
     { label: 'Shoes', value: 'shoes' },
     { label: 'Top', value: 'top' },
-    // Add more categories as needed
   ];
 
   const brandOptions = [
     { label: 'Brand', value: '' },
     { label: 'Nike', value: 'nike' },
     { label: 'Addidas', value: 'addidas' },
-    // Add more brands as needed
   ];
 
   const sortOptions = [
     { label: 'Last arrived', value: '' },
     { label: 'Price Low to High', value: 'priceDes' },
     { label: 'Price High to Low', value: 'priceAsc' },
-    // Add more sorting options as needed
   ];
   return (
-      <div>
-              <Select label="Category" options={categoryOptions} value={category} onChange={(e) => setCategory(e.target.value)} />
+    <div>
+      <Select label="Category" options={categoryOptions} value={category} onChange={(e) => setCategory(e.target.value)} />
       <Select label="Brand" options={brandOptions} value={brand} onChange={(e) => setBrand(e.target.value)} />
       <Select label="Sort By" options={sortOptions} value={sort} onChange={(e) => setSort(e.target.value)} />
     </div>
