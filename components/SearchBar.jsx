@@ -5,9 +5,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { constructUrl } from "@/utils/constructUrl";
 
 const SearchBar = ({searchParams}) => {
-  const [search, setSearch] = useState(searchParams?.search  || '')
   const router = useRouter()
-
+  
+  const [search, setSearch] = useState(searchParams?.search || '')
   const category = searchParams?.category || '';
   const brand = searchParams?.brand || ''
  const sort =  searchParams?.sort  || ''
@@ -17,7 +17,7 @@ const SearchBar = ({searchParams}) => {
     
     let newUrl = constructUrl(category, brand, sort, search);
     router.push(`/products${newUrl}`);
- 
+ console.log("search")
   }, [search, router])
 
 

@@ -7,12 +7,13 @@ import { constructUrl } from "@/utils/constructUrl";
 
 const SelectProducts = ({ searchParams }) => {
 
-    const [category, setCategory] = useState('');
-    const [brand, setBrand] = useState('');
-  const [sort, setSort] = useState('');
+    const [category, setCategory] = useState(searchParams?.category || '');
+    const [brand, setBrand] = useState(searchParams?.brand || '');
+  const [sort, setSort] = useState(searchParams?.sort || '');
+  const search =  searchParams?.search  || ''
   const router = useRouter()
 
-
+/*
   useEffect(() => {
     // Initialize state with the corresponding searchParams if they exist to prevent reset on refresh
     if (searchParams) {
@@ -22,11 +23,13 @@ const SelectProducts = ({ searchParams }) => {
         if (initSort) setSort(initSort);
     }
 }, [searchParams]);
-
+*/
   useEffect(() => {
     // Update the URL with the selected values
-    let newUrl = constructUrl(category, brand, sort);
+    let newUrl = constructUrl(category, brand, sort, search);
     router.push(`/products${newUrl}`);
+
+    console.log("select")
 }, [category, brand, sort, router]);
 
     
