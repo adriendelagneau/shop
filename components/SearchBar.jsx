@@ -4,20 +4,24 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { constructUrl } from "@/utils/constructUrl";
 
-const SearchBar = ({searchParams}) => {
+const SearchBar = ({ searchParams }) => {
   const router = useRouter()
-  
+
   const [search, setSearch] = useState(searchParams?.search || '')
   const category = searchParams?.category || '';
   const brand = searchParams?.brand || ''
- const sort =  searchParams?.sort  || ''
-  
-  
+  const sort = searchParams?.sort || ''
+
+
   useEffect(() => {
-    
-    let newUrl = constructUrl(category, brand, sort, search);
-    router.push(`/products${newUrl}`);
- console.log("search")
+
+    const delayDebounce = setTimeout(() => {
+
+
+      let newUrl = constructUrl(category, brand, sort, search);
+      router.push(`/products${newUrl}`);
+    }, 300)
+    return () => clearTimeout(delayDebounce);
   }, [search, router])
 
 

@@ -13,23 +13,12 @@ const SelectProducts = ({ searchParams }) => {
   const search =  searchParams?.search  || ''
   const router = useRouter()
 
-/*
-  useEffect(() => {
-    // Initialize state with the corresponding searchParams if they exist to prevent reset on refresh
-    if (searchParams) {
-        const { category: initCategory, brand: initBrand, sort: initSort } = searchParams;
-        if (initCategory) setCategory(initCategory);
-        if (initBrand) setBrand(initBrand);
-        if (initSort) setSort(initSort);
-    }
-}, [searchParams]);
-*/
+
   useEffect(() => {
     // Update the URL with the selected values
     let newUrl = constructUrl(category, brand, sort, search);
     router.push(`/products${newUrl}`);
 
-    console.log("select")
 }, [category, brand, sort, router]);
 
     
@@ -37,15 +26,15 @@ const SelectProducts = ({ searchParams }) => {
       // Options for each select
   const categoryOptions = [
     { label: 'Category ', value: '' },
-    { label: 'Category 1', value: 'shoes' },
-    { label: 'Category 2', value: 'top' },
+    { label: 'Shoes', value: 'shoes' },
+    { label: 'Top', value: 'top' },
     // Add more categories as needed
   ];
 
   const brandOptions = [
     { label: 'Brand', value: '' },
-    { label: 'Brand 1', value: 'nike' },
-    { label: 'Brand 2', value: 'addidas' },
+    { label: 'Nike', value: 'nike' },
+    { label: 'Addidas', value: 'addidas' },
     // Add more brands as needed
   ];
 
