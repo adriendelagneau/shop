@@ -1,4 +1,4 @@
-export  const constructUrl = (category, brand, sort) => {
+export  const constructUrl = (category, brand, sort, search) => {
     let newUrl = '';
 
     // Append category, brand, and sort to the URL if they exist
@@ -12,6 +12,10 @@ export  const constructUrl = (category, brand, sort) => {
 
     if (sort) {
         newUrl += `&sort=${sort}`;
+    }
+
+    if (search) {
+        newUrl += `&search=${(search)}`;
     }
 
     // Remove the leading '&' if it exists

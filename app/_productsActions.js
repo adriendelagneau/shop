@@ -4,8 +4,8 @@ import Product from "@/lib/models/Product"
 
 
 
-export const getProducts = async (page = 1, limit = 12, query, category, brand, sort) => {
-    console.log("action");
+export const getProducts = async (page = 1, limit = 12, search, category, brand, sort) => {
+
     try {
         // Build the filter object based on the provided parameters
         const filter = {};
@@ -13,13 +13,24 @@ export const getProducts = async (page = 1, limit = 12, query, category, brand, 
             filter.category = category;
         }
         if (brand) {
-            filter.brand = brand; 
+            filter.brand = brand;
         }
 
-
+        // Build the search criteria for name, category, and description
+        const searchCriteria = search
+            ? {
+                $or: [
+                    { name: { $regex: new RegExp(search, 'i') } }, // Case-insensitive regex match for name
+                    { category: { $regex: new RegExp(search, 'i') } }, // Case-insensitive regex match for category
+                    { brand: { $regex: new RegExp(search, 'i') } }, // Case-insensitive regex match for category
+                    { description: { $regex: new RegExp(search, 'i') } }, // Case-insensitive regex match for description
+                ],
+            }
+            : {};
 
         // Combine the filter and search criteria
-        const combinedFilter = { ...filter};
+        const combinedFilter = { ...filter, ...searchCriteria };
+
 
         // Calculate skipCount
         const skipCount = (page - 1) * limit;
@@ -33,7 +44,7 @@ export const getProducts = async (page = 1, limit = 12, query, category, brand, 
         } else {
             sortOptions = { createdAt: 1 }; // Default sorting by createdAt in ascending order
         }
-        
+
         // Use the combined filter and sort objects in the find query
         const result = await Product.find(combinedFilter).skip(skipCount).limit(limit).sort(sortOptions);
 

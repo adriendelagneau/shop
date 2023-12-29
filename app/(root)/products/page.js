@@ -1,4 +1,5 @@
 import { getProducts } from '@/app/_productsActions'
+import SearchBar from '@/components/SearchBar';
 import SelectProducts from '@/components/SelectProducts';
 import React from 'react'
 
@@ -9,7 +10,7 @@ const ProductPage = async ({searchParams}) => {
   const data = await getProducts(
     searchParams?.page || 1,
     searchParams?.limit || 12,
-    searchParams?.query || "",
+    searchParams?.search || "",
     searchParams?.category || "",
     searchParams?.brand || "",
     searchParams?.sort || ""
@@ -25,7 +26,10 @@ const ProductPage = async ({searchParams}) => {
               ))}
         </div>
         
-<SelectProducts searchParams={searchParams}/>
+        <SelectProducts searchParams={searchParams} />
+       <SearchBar searchParams={searchParams} />
+        
+
         </div>
   )
 }
