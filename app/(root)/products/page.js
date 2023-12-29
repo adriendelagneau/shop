@@ -1,16 +1,31 @@
 import { getProducts } from '@/app/_productsActions'
+import SelectProducts from '@/components/SelectProducts';
 import React from 'react'
 
-const ProductPage = async () => {
+const ProductPage = async ({searchParams}) => {
 
-    const products = await getProducts()
-    console.log(products)
+
+
+  const data = await getProducts(
+    searchParams?.page || 1,
+    searchParams?.limit || 12,
+    searchParams?.query || "",
+    searchParams?.category || "",
+    searchParams?.brand || "",
+    searchParams?.sort || ""
+  );
+
     return (
-      <div className='h-[200vh]'>
-    <div>ProductPage</div>
-            {products?.map((p, i) => (
-                <div key={i}>{p.name}</div>
-      ))}
+      <div >
+        <div>ProductPage</div>
+        <div className='w-full flex gap-14 flex-wrap'>
+
+            {data?.products.map((p, i) => (
+              <div key={i} className='w-[400px] h-[400px] bg-red-500'>{p.name}</div>
+              ))}
+        </div>
+        
+<SelectProducts searchParams={searchParams}/>
         </div>
   )
 }

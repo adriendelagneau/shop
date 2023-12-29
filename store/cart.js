@@ -1,6 +1,5 @@
 import { create } from 'zustand'
-import { persist} from 'zustand/middleware'
-
+import { persist } from 'zustand/middleware'
 
 
 export const useCartStore = create(
@@ -41,6 +40,10 @@ export const useCartStore = create(
           ),
         }),
       clearCart: () => set({ cart: [] }),
+      getTotalQuantity: () =>
+        get().cart.reduce((total, item) => total + item.quantity, 0),
+      getTotalPrice: () =>
+        get().cart.reduce((total, item) => total + item.price * item.quantity, 0),
     }),
     {
       name: 'cart-storage',
