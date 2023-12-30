@@ -31,6 +31,8 @@ export const getProducts = async (page = 1, limit = 3, search, category, brand, 
         // Combine the filter and search criteria
         const combinedFilter = { ...filter, ...searchCriteria };
 
+        console.log(combinedFilter, "cb")
+
 
         // Calculate skipCount
         const skipCount = (page - 1) * limit;
@@ -50,6 +52,7 @@ export const getProducts = async (page = 1, limit = 3, search, category, brand, 
         
         const result = await Product.find(combinedFilter).skip(skipCount).limit(limit).sort(sortOptions);
 
+        console.log(result, 'rr')
 
         // Calculate the total number of pages
         const totalPages = Math.ceil(allResult.length / limit);

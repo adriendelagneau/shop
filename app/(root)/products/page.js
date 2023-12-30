@@ -26,10 +26,9 @@ const ProductPage = async ({searchParams}) => {
               ))}
         </div>
         {/*
-        
       */}
+      <SearchBar searchParams={searchParams} />
       <SelectProducts searchParams={searchParams} />
-       <SearchBar searchParams={searchParams} />
         
 
         </div>

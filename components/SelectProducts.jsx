@@ -11,14 +11,14 @@ const SelectProducts = ({ searchParams }) => {
   const [brand, setBrand] = useState(searchParams?.brand || '');
   const [sort, setSort] = useState(searchParams?.sort || '');
   const search = searchParams?.search || ''
-  let page = parseInt(searchParams?.page) || 1
+ 
 
   const router = useRouter()
 
 
   useEffect(() => {
     // Update the URL with the selected values
-    let newUrl = constructUrl(page,category, brand, sort, search);
+    let newUrl = constructUrl(category, brand, sort, search);
     router.push(`/products${newUrl}`);
 
   }, [category, brand, sort, router]);
