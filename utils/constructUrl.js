@@ -1,10 +1,8 @@
-export  const constructUrl = (page, category, brand, sort, search) => {
+export  const constructUrl = ( category, brand, sort, search) => {
     let newUrl = '';
 
     // Append category, brand, and sort to the URL if they exist
-    if (page) {
-        newUrl += `&page=${(page)}`;
-    }
+  
 
     if (category) {
         newUrl += `&category=${category}`;

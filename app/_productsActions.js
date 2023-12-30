@@ -46,11 +46,13 @@ export const getProducts = async (page = 1, limit = 3, search, category, brand, 
         
       //  console.log(skipCount, "sk")
         // Use the combined filter and sort objects in the find query
+        const allResult = await Product.find(combinedFilter);
+        
         const result = await Product.find(combinedFilter).skip(skipCount).limit(limit).sort(sortOptions);
 
 
         // Calculate the total number of pages
-        const totalPages = Math.ceil(result.length / limit);
+        const totalPages = Math.ceil(allResult.length / limit);
 
         // Convert MongoDB objects to plain objects
         const plainObject = result.map(item => item.toObject());

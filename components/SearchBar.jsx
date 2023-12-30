@@ -12,8 +12,8 @@ const SearchBar = ({ searchParams }) => {
   const brand = searchParams?.brand || ''
   const sort = searchParams?.sort || ''
 
-  //
-  const [page, setPage] = useState(parseInt(searchParams?.page) || 1)
+  
+
 
 
 
@@ -22,11 +22,11 @@ const SearchBar = ({ searchParams }) => {
     const delayDebounce = setTimeout(() => {
 
 
-      let newUrl = constructUrl(page, category, brand, sort, search);
+      let newUrl = constructUrl(category, brand, sort, search);
       router.push(`/products${newUrl}`);
     }, 300)
     return () => clearTimeout(delayDebounce);
-  }, [search, router, page])
+  }, [search, router])
 
 
 
@@ -40,7 +40,7 @@ const SearchBar = ({ searchParams }) => {
       />
 
  
-<div onClick={() =>   setPage((prevPage) => prevPage +1)}>next page</div>
+
  
     </div>
   );
