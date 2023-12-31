@@ -42,9 +42,9 @@ const ProductPage = async ({ searchParams }) => {
         {/*
 
 */}
-<SearchCompoent queryText={query} />
+<LoadMore pageText={page} totalPages={data?.totalPages} />
 <SelectorComponent categoryText={category} brandText={brand} sortText={sort} />
-      <LoadMore pageText={page} totalPages={data?.totalPages} />
+    <SearchCompoent queryText={query} />
       </div>
   )
 }

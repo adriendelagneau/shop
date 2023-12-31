@@ -14,14 +14,17 @@ const SearchCompoent = ({ queryText }) => {
     useEffect(() => {
         // Create a new URLSearchParams object
         const newParams = new URLSearchParams(searchParams);
-
+   
         // Set or delete the 'query' parameter based on the search query value
         // Debounce the execution to reduce the frequency of updates
         const delayDebounceFn = setTimeout(() => {
             if (!query) {
                 newParams.delete('query');
+               
             } else {
+                newParams.delete('page')
                 newParams.set('query', query);
+
             }
 
             // Push the updated URL to the router

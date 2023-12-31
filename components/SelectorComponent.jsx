@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Select from "./Select";
 
@@ -7,6 +7,8 @@ const SelectorComponent = ({ categoryText, brandText, sortText }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
+
+
 
   // State for managing query parameters
   const [queryParams, setQueryParams] = useState({
@@ -22,6 +24,8 @@ const SelectorComponent = ({ categoryText, brandText, sortText }) => {
 
   // Effect to update the URL when query parameters change
   useEffect(() => {
+
+
     // Create a new URLSearchParams object
     const newParams = new URLSearchParams(searchParams);
 
@@ -29,6 +33,7 @@ const SelectorComponent = ({ categoryText, brandText, sortText }) => {
     Object.entries(queryParams).forEach(([key, value]) => {
       if (value) {
         newParams.set(key, value);
+        newParams.delete('page')
       } else {
         newParams.delete(key);
       }
