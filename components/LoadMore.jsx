@@ -20,8 +20,6 @@ const LoadMore = ({ pageText, totalPages}) => {
     // Create a new URLSearchParams object
     const newParams = new URLSearchParams(searchParams);
 
-
-    console.log(page, "1")
     // Set or delete the 'query' parameter based on the search query value
     // Debounce the execution to reduce the frequency of updates
   
@@ -39,13 +37,20 @@ const LoadMore = ({ pageText, totalPages}) => {
 
 }, [page, router, pathname]);
   
-
+console.log(totalPages, "ttop")
   
   return (
     <div>
-      <div>page: { page }</div>
-      <div onClick={() => setPage(page-1)}>prev page</div>
+      <div>page: {page}</div>
+      {page > 1 &&
+      <div onClick={() => setPage(page - 1)}>prev page</div>
+      }
+
+
+      {page < totalPages &&
       <div onClick={() => setPage(page + 1)}>next page</div>
+      }
+
     </div>
   );
 };

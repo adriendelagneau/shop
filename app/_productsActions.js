@@ -60,7 +60,8 @@ export const getProducts = async (page = 1, limit = 3, query, category, brand, s
         const totalPages = Math.ceil(allResult.length / limit);
 
         // Convert MongoDB objects to plain objects
-        const plainObject = result.map(item => item.toObject());
+        JSON.parse(JSON.stringify(result))
+        const plainObject = JSON.parse(JSON.stringify(result))
 
 
        
