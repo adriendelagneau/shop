@@ -1,36 +1,47 @@
 import { getProducts } from '@/app/_productsActions'
-import SearchBar from '@/components/SearchBar';
-import SelectProducts from '@/components/SelectProducts';
+import Collection from '@/components/Collection';
+import SearchCompoent from '@/components/SearchCompoent';
+import SelectorComponent from '@/components/SelectorComponent';
+
 import React from 'react'
 
-const ProductPage = async ({searchParams}) => {
-
+const ProductPage = async ({ searchParams }) => {
+  
+  const page = searchParams?.page || 1
+  const limit = searchParams?.limit || 3
+  const query = searchParams?.query || ""
+  const category = searchParams?.category || ""
+  const brand = searchParams?.brand || ""
+  const sort = searchParams?.sort || ""
 
 
   const data = await getProducts(
-    searchParams?.page || 1,
-    searchParams?.limit || 3,
-    searchParams?.search || "",
-    searchParams?.category || "",
-    searchParams?.brand || "",
-    searchParams?.sort || ""
+    page,
+    limit,
+    query,
+    category,
+    brand,
+    sort
   );
 
     return (
       <div >
         <div>ProductPage</div>
-        <div className='w-full flex gap-14 flex-wrap'>
-
-            {data?.products.map((p, i) => (
-              <div key={i} className='w-[400px] h-[400px] bg-red-500'>{p.name}</div>
-              ))}
-        </div>
+      
+        <Collection
+          data={data?.products}
+          emptyTitle="No products Found"
+          emptyStateSubtext="Come back later"
+          collectionType="All"
+          limit={3}
+          page={page}
+          totalPages={data?.totalPages}
+        />
         {/*
-      */}
-      <SearchBar searchParams={searchParams} />
-      <SelectProducts searchParams={searchParams} />
-        
 
+      */}
+        <SearchCompoent queryText={query} />
+        <SelectorComponent categoryText={category} brandText={brand} sortText={sort} />
         </div>
   )
 }

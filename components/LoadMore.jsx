@@ -1,61 +1,37 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import { getProducts } from '@/app/_productsActions' 
+'use client'
 
-import { useInView} from 'react-intersection-observer'
-import Image from 'next/image'
-import AnimeCard from './AnimeCard'
+import { useEffect, useState } from "react";
+import { useRouter} from "next/navigation";
+import { constructUrl } from "@/utils/constructUrl";
 
-let currentPage = 2
+const LoadMore = ({ searchParams, data }) => {
+  const router = useRouter()
 
-function LoadMore() {
-    const { ref, inView } = useInView();
-    const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [hasMorePages, setHasMorePages] = useState(true); // New state variable
+  const search =  searchParams?.search || ''
+  const category = searchParams?.category || '';
+  const brand = searchParams?.brand || ''
+  const sort = searchParams?.sort || ''
+  const [page, setPage] = useState(searchParams?.page || 1)
   
-    useEffect(() => {
-      setIsLoading(true);
-      if (inView && hasMorePages) {
-        getProducts(currentPage, 8)
-          .then((res) => {
-            if (res.length > 0) {
-              setData([...data, ...res]);
-              currentPage++;
-            } else {
-              // If no more data, set hasMorePages to false
-              setHasMorePages(false);
-            }
-            setIsLoading(false);
-          })
-          .catch((error) => {
-            console.error('Error fetching data:', error);
-            setIsLoading(false);
-          });
-      }
-        console.log('load more')
-    }, [inView, hasMorePages]);
-    return (
-      <>
-          <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
-        {data.map((item, index) => (
-          <AnimeCard key={index} data={item} index={index} />
-        ))}
-      </section>
-        <section className="flex justify-center items-center w-full mt-16">
-          <div ref={ref}>
-            {isLoading && hasMorePages &&  (
-              <Image
-                src="./spinner.svg"
-                alt="spinner"
-                width={56}
-                height={56}
-                className="object-contain"
-              />
-            )}
-          </div>
-        </section>
-      </>
-    );
-  }
-export default LoadMore
+  useEffect(() => {
+    let newUrl = constructUrl(page, category, brand, sort, search);
+    router.push(`/products${newUrl}`);
+    
+  }, [page, router])
+  
+
+  
+  return (
+    <div>
+        <div className='w-full flex gap-14 flex-wrap'>
+
+        {data?.products.map((p, i) => (
+          <div key={i} className='w-[400px] h-[400px] bg-red-500'>{p.name}</div>
+          ))}
+        </div>
+      <div onClick={() => setPage(parseInt(page)+1)}>next page</div>
+    </div>
+  );
+};
+
+export default LoadMore;

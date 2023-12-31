@@ -1,11 +1,13 @@
 "use server"
 
+import { connectToDatabase } from "@/lib/db";
 import Product from "@/lib/models/Product"
 
 
 
-export const getProducts = async (page = 1, limit = 3, search, category, brand, sort) => {
+export const getProducts = async (page = 1, limit = 3, query, category, brand, sort) => {
 
+    await connectToDatabase()
     try {
         // Build the filter object based on the provided parameters
         const filter = {};
@@ -17,13 +19,13 @@ export const getProducts = async (page = 1, limit = 3, search, category, brand, 
         }
 
         // Build the search criteria for name, category, and description
-        const searchCriteria = search
+        const searchCriteria = query
             ? {
                 $or: [
-                    { name: { $regex: new RegExp(search, 'i') } }, // Case-insensitive regex match for name
-                    { category: { $regex: new RegExp(search, 'i') } }, // Case-insensitive regex match for category
-                    { brand: { $regex: new RegExp(search, 'i') } }, // Case-insensitive regex match for category
-                    { description: { $regex: new RegExp(search, 'i') } }, // Case-insensitive regex match for description
+                    { name: { $regex: new RegExp(query, 'i') } }, // Case-insensitive regex match for name
+                    { category: { $regex: new RegExp(query, 'i') } }, // Case-insensitive regex match for category
+                    { brand: { $regex: new RegExp(query, 'i') } }, // Case-insensitive regex match for category
+                    { description: { $regex: new RegExp(query, 'i') } }, // Case-insensitive regex match for description
                 ],
             }
             : {};
@@ -31,7 +33,7 @@ export const getProducts = async (page = 1, limit = 3, search, category, brand, 
         // Combine the filter and search criteria
         const combinedFilter = { ...filter, ...searchCriteria };
 
-        console.log(combinedFilter, "cb")
+
 
 
         // Calculate skipCount
@@ -52,7 +54,7 @@ export const getProducts = async (page = 1, limit = 3, search, category, brand, 
         
         const result = await Product.find(combinedFilter).skip(skipCount).limit(limit).sort(sortOptions);
 
-        console.log(result, 'rr')
+       
 
         // Calculate the total number of pages
         const totalPages = Math.ceil(allResult.length / limit);
@@ -60,6 +62,8 @@ export const getProducts = async (page = 1, limit = 3, search, category, brand, 
         // Convert MongoDB objects to plain objects
         const plainObject = result.map(item => item.toObject());
 
+
+       
         // Return the products along with total pages
         return { products: plainObject, totalPages };
     } catch (err) {

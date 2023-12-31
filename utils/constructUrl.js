@@ -1,27 +1,26 @@
-export  const constructUrl = ( category, brand, sort, search) => {
-    let newUrl = '';
+export const constructUrl = (page, category, brand, sort, search) => {
+    const params = [];
 
-    // Append category, brand, and sort to the URL if they exist
-  
+    if (page) {
+        params.push(`page=${encodeURIComponent(page)}`);
+    }
 
     if (category) {
-        newUrl += `&category=${category}`;
+        params.push(`category=${encodeURIComponent(category)}`);
     }
 
     if (brand) {
-        newUrl += `&brand=${brand}`;
+        params.push(`brand=${encodeURIComponent(brand)}`);
     }
 
     if (sort) {
-        newUrl += `&sort=${sort}`;
+        params.push(`sort=${encodeURIComponent(sort)}`);
     }
 
     if (search) {
-        newUrl += `&search=${(search)}`;
+        params.push(`search=${encodeURIComponent(search)}`);
     }
 
-    // Remove the leading '&' if it exists
-    newUrl = newUrl.replace(/^&/, '');
-
-    return newUrl ? `?${newUrl}` : '';
+    return params.length > 0 ? `?${params.join('&')}` : '';
 };
+

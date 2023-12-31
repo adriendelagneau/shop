@@ -11,7 +11,7 @@ const SearchBar = ({ searchParams }) => {
   const category = searchParams?.category || '';
   const brand = searchParams?.brand || ''
   const sort = searchParams?.sort || ''
-
+  const page = searchParams?.page || 1
   
 
 
@@ -22,11 +22,11 @@ const SearchBar = ({ searchParams }) => {
     const delayDebounce = setTimeout(() => {
 
 
-      let newUrl = constructUrl(category, brand, sort, search);
+      let newUrl = constructUrl(page, category, brand, sort, search);
       router.push(`/products${newUrl}`);
     }, 300)
     return () => clearTimeout(delayDebounce);
-  }, [search, router])
+  }, [page, category, brand, sort, search, router])
 
 
 
