@@ -1,5 +1,6 @@
 import { getProducts } from '@/app/_productsActions'
 import Collection from '@/components/Collection';
+import LoadMore from '@/components/LoadMore';
 import SearchCompoent from '@/components/SearchCompoent';
 import SelectorComponent from '@/components/SelectorComponent';
 
@@ -24,6 +25,8 @@ const ProductPage = async ({ searchParams }) => {
     sort
   );
 
+  console.log(page, "zz")
+
     return (
       <div >
         <div>ProductPage</div>
@@ -39,10 +42,11 @@ const ProductPage = async ({ searchParams }) => {
         />
         {/*
 
-      */}
-        <SearchCompoent queryText={query} />
-        <SelectorComponent categoryText={category} brandText={brand} sortText={sort} />
-        </div>
+*/}
+<SearchCompoent queryText={query} />
+<SelectorComponent categoryText={category} brandText={brand} sortText={sort} />
+      <LoadMore pageText={page} totalPages={data?.totalPages} />
+      </div>
   )
 }
 

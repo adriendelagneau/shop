@@ -1,35 +1,51 @@
 'use client'
 
-import { useEffect, useState } from "react";
-import { useRouter} from "next/navigation";
-import { constructUrl } from "@/utils/constructUrl";
+import { useEffect, useState } from "react"
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
-const LoadMore = ({ searchParams, data }) => {
-  const router = useRouter()
 
-  const search =  searchParams?.search || ''
-  const category = searchParams?.category || '';
-  const brand = searchParams?.brand || ''
-  const sort = searchParams?.sort || ''
-  const [page, setPage] = useState(searchParams?.page || 1)
+const LoadMore = ({ pageText, totalPages}) => {
+  const searchParams = useSearchParams();
+  const [page, setPage] = useState(parseInt(searchParams.get("page") || 1));
+  const router = useRouter();
+  const pathname = usePathname();
+
+ // Effect to update the page state when the URL changes
+ useEffect(() => {
+  // Parse the 'page' parameter from the URL and update the state
+  setPage(parseInt(searchParams.get("page") || 1));
+}, [searchParams]);
   
   useEffect(() => {
-    let newUrl = constructUrl(page, category, brand, sort, search);
-    router.push(`/products${newUrl}`);
-    
-  }, [page, router])
+    // Create a new URLSearchParams object
+    const newParams = new URLSearchParams(searchParams);
+
+
+    console.log(page, "1")
+    // Set or delete the 'query' parameter based on the search query value
+    // Debounce the execution to reduce the frequency of updates
+  
+        if (!page || page == 1) {
+          newParams.delete('page');
+
+        
+        } else {
+          newParams.set('page', page);
+
+        }
+
+        // Push the updated URL to the router
+        router.push(`${pathname}?${newParams.toString()}`);
+
+}, [page, router, pathname]);
   
 
   
   return (
     <div>
-        <div className='w-full flex gap-14 flex-wrap'>
-
-        {data?.products.map((p, i) => (
-          <div key={i} className='w-[400px] h-[400px] bg-red-500'>{p.name}</div>
-          ))}
-        </div>
-      <div onClick={() => setPage(parseInt(page)+1)}>next page</div>
+      <div>page: { page }</div>
+      <div onClick={() => setPage(page-1)}>prev page</div>
+      <div onClick={() => setPage(page + 1)}>next page</div>
     </div>
   );
 };
