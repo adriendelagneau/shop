@@ -2,32 +2,34 @@
 
 import { useEffect, useState } from "react"
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-//import { formUrlQuery, removeKeysFromQuery } from '@/utils/handleReqParams'
+
 
 const SearchCompoent = ({ queryText }) => {
-
     const [query, setQuery] = useState(queryText);
     const router = useRouter();
     const searchParams = useSearchParams();
-
-
     const pathname = usePathname();
 
+    // Effect to update the URL when the search query changes
     useEffect(() => {
+        // Create a new URLSearchParams object
+        const newParams = new URLSearchParams(searchParams);
 
-        const newParams = new URLSearchParams(searchParams)
-        
+        // Set or delete the 'query' parameter based on the search query value
+        // Debounce the execution to reduce the frequency of updates
         const delayDebounceFn = setTimeout(() => {
             if (!query) {
                 newParams.delete('query');
             } else {
                 newParams.set('query', query);
             }
+
+            // Push the updated URL to the router
             router.push(`${pathname}?${newParams.toString()}`);
-        }, 300)
+        }, 300);
 
         return () => clearTimeout(delayDebounceFn);
-    }, [query, router,  pathname]);
+    }, [query, router, pathname]);
 
     return (
         <div>
