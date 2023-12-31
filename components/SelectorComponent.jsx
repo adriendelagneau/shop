@@ -36,7 +36,7 @@ const SelectorComponent = ({ categoryText, brandText, sortText }) => {
 
     // Push the updated URL to the router
     router.push(`${pathname}?${newParams.toString()}`);
-  }, [queryParams, router, pathname, searchParams]);
+  }, [queryParams, router, pathname]);
 
   // Configuration object for options of each Select component
   const selectOptions = {
