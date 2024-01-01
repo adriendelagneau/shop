@@ -24,7 +24,6 @@ const InfinitScroll = ({totalPages}) => {
 
 
   useEffect(() => {
-   console.log(inView, data)
     if (inView) {
       getProducts( page,
         limit,
@@ -39,8 +38,7 @@ const InfinitScroll = ({totalPages}) => {
         })
 
     }
-    //console.log(data)
-  }, [inView, data])
+  }, [inView])
 
 
 
@@ -54,6 +52,7 @@ const InfinitScroll = ({totalPages}) => {
             )
           )}
           </ul>
+      {page-1 < totalPages &&
      
     <div className='flex justify-center pb-28' ref={ref}>
           <Image
@@ -64,6 +63,7 @@ const InfinitScroll = ({totalPages}) => {
             className="object-contain "
         />
       </div>
+     }
       
       
     </>
