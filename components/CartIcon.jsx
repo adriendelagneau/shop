@@ -13,10 +13,13 @@ const CartIcon = () => {
     useCartStore.persist.rehydrate();
   }, [])
 
-
+console.log(cart)
   return (
     <>
       <div>cart</div>
+        {cart.length > 0 && (
+      <div className="w-8 h-8 rounded-full bg-red-800 text-xl flex justify-center items-center">{cart.length}</div>
+        )}
     </>
   )
 }

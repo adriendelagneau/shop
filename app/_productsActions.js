@@ -4,7 +4,6 @@ import { connectToDatabase } from "@/lib/db";
 import Product from "@/lib/models/Product"
 
 
-
 export const getProducts = async (page = 1, limit = 6, query, category, brand, sort) => {
 
     await connectToDatabase()
@@ -34,9 +33,6 @@ export const getProducts = async (page = 1, limit = 6, query, category, brand, s
         // Combine the filter and search criteria
         const combinedFilter = { ...filter, ...searchCriteria };
 
-
-
-
         // Calculate skipCount
         const skipCount = (page - 1) * limit;
         // Build the sort object based on the provided sort parameter or use default sorting options
@@ -55,8 +51,6 @@ export const getProducts = async (page = 1, limit = 6, query, category, brand, s
         
         const result = await Product.find(combinedFilter).skip(skipCount).limit(limit).sort(sortOptions);
 
-       
-
         // Calculate the total number of pages
         const totalPages = Math.ceil(allResult.length / limit);
 
@@ -64,10 +58,35 @@ export const getProducts = async (page = 1, limit = 6, query, category, brand, s
         JSON.parse(JSON.stringify(result))
         const plainObject = JSON.parse(JSON.stringify(result))
 
-
-       
         // Return the products along with total pages
         return { products: plainObject, totalPages };
+    } catch (err) {
+        console.log(err);
+        throw err; // Rethrow the error to handle it at a higher level
+    }
+};
+
+
+
+export const getProductById = async (id) => {
+
+    console.log(id, "dd")
+    await connectToDatabase();
+
+    try {
+        // Use Mongoose findById to retrieve a product by its ID
+        const product = await Product.findById(id);
+
+        // If the product is not found, you may want to handle this case accordingly
+        if (!product) {
+            throw new Error("Product not found");
+        }
+
+        // Convert the MongoDB object to a plain JavaScript object
+        const plainObject = JSON.parse(JSON.stringify(product));
+
+        // Return the product as a plain object
+        return plainObject;
     } catch (err) {
         console.log(err);
         throw err; // Rethrow the error to handle it at a higher level

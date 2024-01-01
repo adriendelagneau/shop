@@ -22,7 +22,7 @@ const InfinitScroll = ({ totalPages }) => {
 
   // Effect to fetch more products when component comes into view
   useEffect(() => {
-    if (inView) {
+    if (inView ) {
       getProducts(page, limit, query, category, brand, sort)
         .then((res) => {
           // Update data and increment page for the next fetch
