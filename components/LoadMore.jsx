@@ -31,20 +31,19 @@ const LoadMore = ({ pageText, totalPages }) => {
 
     // Push the updated URL to the router
     router.push(`${pathname}?${newParams.toString()}`);
-
+console.log("load more")
   }, [page, router, pathname]);
-
 
   return (
     <div>
-      <div>page: {page}</div>
+      <div>page: {page}/{totalPages }</div>
       
-      {page > 1 &&
-        <div onClick={() => setPage(page - 1)}>prev page</div>
-      }
-      {page < totalPages &&
-        <div onClick={() => setPage(page + 1)}>next page</div>
-      }
+      
+        <button  className={`p-2 mx-1 ${page <= 1 ? 'cursor-not-allowed' : ''}`} onClick={() => setPage(page - 1)} disabled={page > 1 ? false : true}>prev page</button>
+      
+
+        <button className={`p-2 mx-1 ${page >= totalPages ? 'cursor-not-allowed' : ''}`} onClick={() => setPage(page + 1)} disabled={page < totalPages ? false : true}>next page</button>
+      
 
     </div>
   );

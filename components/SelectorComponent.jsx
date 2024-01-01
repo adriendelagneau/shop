@@ -33,7 +33,7 @@ const SelectorComponent = ({ categoryText, brandText, sortText }) => {
     Object.entries(queryParams).forEach(([key, value]) => {
       if (value) {
         newParams.set(key, value);
-        newParams.delete('page')
+      //  newParams.delete('page')
       } else {
         newParams.delete(key);
       }

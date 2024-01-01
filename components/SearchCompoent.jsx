@@ -22,7 +22,7 @@ const SearchCompoent = ({ queryText }) => {
                 newParams.delete('query');
                
             } else {
-                newParams.delete('page')
+               // newParams.delete('page')
                 newParams.set('query', query);
 
             }

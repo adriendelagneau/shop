@@ -1,5 +1,6 @@
 import { getProducts } from '@/app/_productsActions'
 import Collection from '@/components/Collection';
+import InfinitScroll from '@/components/InfinitScroll';
 import LoadMore from '@/components/LoadMore';
 import SearchCompoent from '@/components/SearchCompoent';
 import SelectorComponent from '@/components/SelectorComponent';
@@ -8,8 +9,8 @@ import React from 'react'
 
 const ProductPage = async ({ searchParams }) => {
   
-  const page = searchParams?.page || 1
-  const limit = searchParams?.limit || 3
+  const page =  1
+  const limit = searchParams?.limit || 6
   const query = searchParams?.query || ""
   const category = searchParams?.category || ""
   const brand = searchParams?.brand || ""
@@ -30,6 +31,11 @@ const ProductPage = async ({ searchParams }) => {
       <div >
         <div>ProductPage</div>
       
+<SelectorComponent categoryText={category} brandText={brand} sortText={sort} />
+        <SearchCompoent queryText={query} />
+        
+        
+
         <Collection
           data={data?.products}
           emptyTitle="No products Found"
@@ -41,10 +47,10 @@ const ProductPage = async ({ searchParams }) => {
         />
         {/*
 
-*/}
 <LoadMore pageText={page} totalPages={data?.totalPages} />
-<SelectorComponent categoryText={category} brandText={brand} sortText={sort} />
-    <SearchCompoent queryText={query} />
+*/}
+<InfinitScroll totalPages={data?.totalPages} />
+    
       </div>
   )
 }

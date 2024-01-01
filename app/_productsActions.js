@@ -5,9 +5,10 @@ import Product from "@/lib/models/Product"
 
 
 
-export const getProducts = async (page = 1, limit = 3, query, category, brand, sort) => {
+export const getProducts = async (page = 1, limit = 6, query, category, brand, sort) => {
 
     await connectToDatabase()
+    console.log(page, "pp")
     try {
         // Build the filter object based on the provided parameters
         const filter = {};
