@@ -70,7 +70,7 @@ export const getProducts = async (page = 1, limit = 6, query, category, brand, s
 
 export const getProductById = async (id) => {
 
-    console.log(id, "dd")
+   
     await connectToDatabase();
 
     try {
