@@ -1,5 +1,5 @@
 import React from 'react'
-import { verifyWitnCredentials } from '../_authActions'
+import { verifyWitnCredentials } from '@/app/_authActions' 
 
 const VerifyPage = async ({searchParams: {token}}) => {
     const res = await verifyWitnCredentials(token)
