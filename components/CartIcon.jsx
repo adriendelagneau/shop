@@ -1,6 +1,8 @@
 'use client'
 
 import { useCartStore } from "@/store/cart"
+import { ShoppingBasket } from "lucide-react";
+import Link from "next/link";
 import { useEffect } from "react";
 
 
@@ -13,14 +15,17 @@ const CartIcon = () => {
     useCartStore.persist.rehydrate();
   }, [])
 
-console.log(cart)
+
   return (
-    <>
-      <div>cart</div>
+    <div className="relative h-[35px] w-[35px]">
+        
+        <Link href={"/cart"} >
+      <ShoppingBasket size={35} className="absolute"/>
         {cart.length > 0 && (
-      <div className="w-8 h-8 rounded-full bg-red-800 text-xl flex justify-center items-center">{cart.length}</div>
-        )}
-    </>
+          <div className="absolute top-0 flex items-center justify-center w-5 h-5 text-xl bg-blue-800 rounded-full -right-1"></div>
+          )}
+    </Link>
+          </div>
   )
 }
 

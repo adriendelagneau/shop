@@ -10,10 +10,10 @@ const Header = async () => {
 
   return (
       <header className='w-full'>
-          <nav className='w-full flex justify-between items-center'>
-              <div>logo</div>
-              <div>le shop</div>
-              <ul className='flex'>
+          <nav className='flex items-center justify-between w-full p-4'>
+              <Link href={"/"} className='w-1/3'>logo</Link>
+              <Link href={"/"} className='w-1/3 text-center'>Le Shop</Link>
+              <ul className='flex items-center justify-end w-1/3 gap-4'>
                   <li>
                       {session?.user ? (
                           <div>profile</div>
@@ -22,7 +22,9 @@ const Header = async () => {
                               
                       )}
                   </li>
-                  <li><CartIcon/></li>
+                  <li>
+                      <CartIcon />
+                  </li>
               </ul>
           </nav>
     </header>

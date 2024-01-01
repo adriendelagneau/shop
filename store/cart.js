@@ -6,6 +6,7 @@ export const useCartStore = create(
   persist(
     (set, get) => ({
       cart: [],
+
       addToCart: (item) => {
         const existingItem = get().cart.find((cartItem) => cartItem._id === item._id);
 
@@ -24,30 +25,31 @@ export const useCartStore = create(
         }
       },
 
-
-
-
-
-
       removeFromCart: (itemId) =>
-        set({ cart: get().cart.filter((item) => item.id !== itemId) }),
+        set({ cart: get().cart.filter((item) => item._id !== itemId) }),
+      
       increaseQuantity: (itemId) =>
         set({
           cart: get().cart.map((item) =>
-            item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+            item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
           ),
         }),
+
       decreaseQuantity: (itemId) =>
         set({
-          cart: get().cart.map((item) =>
-            item.id === itemId && item.quantity > 1
-              ? { ...item, quantity: item.quantity - 1 }
-              : item
-          ),
+          cart: get().cart
+            .map((item) =>
+              item._id === itemId
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            ).filter((item) => item.quantity != 0),
         }),
+
       clearCart: () => set({ cart: [] }),
+
       getTotalQuantity: () =>
         get().cart.reduce((total, item) => total + item.quantity, 0),
+
       getTotalPrice: () =>
         get().cart.reduce((total, item) => total + item.price * item.quantity, 0),
     }),
