@@ -5,13 +5,14 @@ import React, { useEffect, useState } from 'react'
 import { useInView} from 'react-intersection-observer'
 import Image from 'next/image'
 import { getProducts } from '@/app/_productsActions'
-import { useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 let page = 2
 
 const InfinitScroll = ({totalPages}) => {
   
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const { ref, inView} = useInView()
   const [data, setData] = useState([])
 
@@ -40,7 +41,11 @@ const InfinitScroll = ({totalPages}) => {
     }
   }, [inView])
 
-
+  useEffect(() => {
+    console.log(`searchParams change`);
+    setData([])
+    page = 2
+  }, [searchParams]);
 
   return (
     <>
