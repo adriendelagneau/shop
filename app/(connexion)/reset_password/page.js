@@ -1,4 +1,4 @@
-import RestPassword from "../components/RestPassword"
+import RestPassword from "@/components/RestPassword"
 
 const ResetPasswordPage = ({searchParams: {token}}) => {
   
