@@ -7,10 +7,14 @@ import { redirect } from "next/navigation"
 import bcrypt from "bcryptjs";
 import { generateToken, verifyToken } from '@/utils/token' 
 import sendEmail from "@/utils/sendEmail"
+import { connectToDatabase } from "@/lib/db"
 
 const BASE_URL= process.env.NEXTAUTH_URL
 
-export const updateUser = async ({name,image}) => {
+export const updateUser = async ({ name, image }) => {
+    
+    await connectToDatabase()
+
     const session = await getServerSession(authOptions)
 
     if (!session) throw new Error('unauthaurize')
@@ -31,7 +35,9 @@ export const updateUser = async ({name,image}) => {
 }
 
 export const signUpWithCredential = async (data) => {
-    
+       
+    await connectToDatabase()
+
     try {
         const user = await User.findOne({ email: data.email })
         if (user) throw new Error('Email already exist')
@@ -56,6 +62,9 @@ export const signUpWithCredential = async (data) => {
 }
 
 export const verifyWitnCredentials = async (token) => {
+    
+    await connectToDatabase()
+    
     try {
         const { user } = verifyToken(token)
      
@@ -74,6 +83,8 @@ export const verifyWitnCredentials = async (token) => {
 
 export const ChangePasswordWitnCredentials = async (oldPass, newPass) => {
      
+    await connectToDatabase()
+
     try { 
         const session = await getServerSession(authOptions)
     
@@ -102,7 +113,9 @@ export const ChangePasswordWitnCredentials = async (oldPass, newPass) => {
 }
 
 export const forgotPasswordWitnCredentials = async (email) => {
-     
+    
+    await connectToDatabase()
+
     try { 
        
         const user = await User.findOne({email})
@@ -128,7 +141,9 @@ export const forgotPasswordWitnCredentials = async (email) => {
 }
 
 export const resetPasswordWitnCredentials = async (token, password) => {
-     
+
+    await connectToDatabase()
+    
     try { 
         const { userId } = verifyToken(token)
         
