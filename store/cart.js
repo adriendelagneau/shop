@@ -20,7 +20,7 @@ export const useCartStore = create(
           });
         } else {
           // If the item is not in the cart, add it with quantity 1
-          set({ cart: [...get().cart, { ...item, quantity: 1 }] });
+          set({ cart: [...get().cart, { ...item, quantity: 1 }] })
         }
       },
 
