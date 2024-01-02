@@ -5,7 +5,6 @@ import User from "@/lib/models/User";
 import bcrypt from "bcryptjs";
 import { connectToDatabase } from "@/lib/db";
 
-connectToDatabase()
 
 
 export const authOptions = {
@@ -59,6 +58,10 @@ export { handler as GET, handler as POST };
 
 
 const signInWithOAuth = async ({ account, profile }) => {
+
+    await connectToDatabase()
+
+
     const user = await User.findOne({ email: profile.email })
 
     if (user) return true //sign in 
@@ -87,7 +90,7 @@ const getUserByEmail = async ({ email }) => {
 
 const signInWithCrendentials = async ({ email, password }) => {
     await connectToDatabase()
-    
+
     const user = await User.findOne({ email })
     if (!user) throw new Error("Email does not exist")
 
