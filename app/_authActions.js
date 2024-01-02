@@ -11,6 +11,8 @@ import { connectToDatabase } from "@/lib/db"
 
 const BASE_URL= process.env.NEXTAUTH_URL
 
+
+
 export const updateUser = async ({ name, image }) => {
     
     await connectToDatabase()

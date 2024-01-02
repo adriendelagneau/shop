@@ -76,6 +76,9 @@ const signInWithOAuth = async ({ account, profile }) => {
 }
 
 const getUserByEmail = async ({ email }) => {
+
+    await connectToDatabase()
+
     const user = await User.findOne({ email }).select("-password")
     if (!user) throw new Error('Email does not exist')
 
@@ -83,6 +86,8 @@ const getUserByEmail = async ({ email }) => {
 }
 
 const signInWithCrendentials = async ({ email, password }) => {
+    await connectToDatabase()
+    
     const user = await User.findOne({ email })
     if (!user) throw new Error("Email does not exist")
 
