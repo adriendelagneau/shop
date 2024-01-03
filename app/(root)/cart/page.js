@@ -6,6 +6,7 @@ import IncreaseCartButton from '@/components/button/IncreaseCartButton'
 import DecreaseCartButton from '@/components/button/DecreaseCartButton'
 import DeleteCartIemButton from '@/components/button/DeleteCartIemButton'
 import CartTotalPrice from '@/components/CartTotalPrice'
+import CheckoutButton from '@/components/button/CheckoutButton'
 
 
 const CartPage = () => {
@@ -44,6 +45,7 @@ const CartPage = () => {
                 <div>Empty cart</div>
             )}</div>
             <CartTotalPrice />
+            <CheckoutButton />
                 </>
     )
 }

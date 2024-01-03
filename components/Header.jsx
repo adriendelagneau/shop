@@ -7,7 +7,7 @@ import CartIcon from './CartIcon'
 const Header = async () => {
     const session = await getServerSession(authOptions)
 
-console.log(session?.user)
+
   return (
       <header className='w-full'>
           <nav className='flex items-center justify-between w-full p-4'>
