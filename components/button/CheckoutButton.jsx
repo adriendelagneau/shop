@@ -1,11 +1,14 @@
 "use client"
 
 import { useCartStore } from "@/store/cart";
-import {loadStripe} from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { useSession } from "next-auth/react"
 
 export default function CheckoutButton() {
     
     const cart = useCartStore((state) => state.cart)
+    const { data: session, status } = useSession()
+
 
     const redirectToCheckout = async () => {
         try {
@@ -18,7 +21,10 @@ export default function CheckoutButton() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(cart),
+                body: JSON.stringify({
+                    cart,
+                    userId: session?.user?._id, // Add the user session ID to the request body
+                }),
             });
 
             const {sessionId} = await checkoutResponse.json();
