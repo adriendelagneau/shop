@@ -16,7 +16,7 @@ const Header = async () => {
               <ul className='flex items-center justify-end w-1/3 gap-4'>
                   <li>
                       {session?.user ? (
-                          <div>profile</div>
+                           <Link href={"/profile"}>profile</Link>
                       ): (
                           <Link href={"/register"}>login</Link>
                               

@@ -28,8 +28,6 @@ export const POST = async (req) => {
 
     try {
 
-console.log(lineItems)
-
         const order = await Order.create({
             stripeId: "2",
             userId,
@@ -52,7 +50,6 @@ console.log(lineItems)
 
         return NextResponse.json({sessionId: session.id});
     } catch (err) {
-        console.log(err)
         return NextResponse.json({error: "Error creating checkout session"});
     }
 }
