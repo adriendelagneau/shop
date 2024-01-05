@@ -27,11 +27,13 @@ export default function CheckoutButton() {
                 }),
             });
 
-            const {sessionId} = await checkoutResponse.json();
+            const { sessionId } = await checkoutResponse.json();
+            
+            console.log(sessionId)
             const stripeError = await stripe.redirectToCheckout({sessionId});
 
             if (stripeError) {
-                console.error(stripeError);
+                console.error(stripeError, "here is error");
             }
         } catch (error) {
             console.error(error);

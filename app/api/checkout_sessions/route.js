@@ -49,7 +49,7 @@ export const POST = async (req) => {
                 allowed_countries: ["FR"]
             },
         });
-console.log(session.id, "sessionId")
+
         return NextResponse.json({sessionId: session.id});
     } catch (err) {
         console.log(err)
