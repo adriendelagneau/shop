@@ -6,7 +6,7 @@ import Order from "@/lib/models/Order";
 
 
 export const POST = async (req) => {
-    console.log("api")
+   
     const headersList = headers();
     const {cart, userId} = await req.json();
 
@@ -28,7 +28,7 @@ export const POST = async (req) => {
 
     try {
 
-
+console.log(lineItems)
 
         const order = await Order.create({
             stripeId: "2",
