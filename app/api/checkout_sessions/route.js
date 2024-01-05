@@ -6,7 +6,7 @@ import Order from "@/lib/models/Order";
 
 
 export const POST = async (req) => {
-    
+    console.log("api")
     const headersList = headers();
     const {cart, userId} = await req.json();
 
