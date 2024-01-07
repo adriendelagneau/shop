@@ -62,24 +62,27 @@ const SelectorComponent = ({ categoryText, brandText, sortText }) => {
 
   return (
     <div>
-      <div>
+      <div  className='flex justify-start max-w-5xl gap-12 m-auto mt-5'>
         <Select
-          label="Category"
+          label=""
           options={selectOptions.category}
           value={queryParams.category}
           onChange={(e) => handleSelectChange('category', e.target.value)}
+  
         />
         <Select
-          label="Brand"
+          label=""
           options={selectOptions.brand}
           value={queryParams.brand}
           onChange={(e) => handleSelectChange('brand', e.target.value)}
+        className="text-5xl"
         />
         <Select
-          label="Sort By"
+          label=""
           options={selectOptions.sort}
           value={queryParams.sort}
           onChange={(e) => handleSelectChange('sort', e.target.value)}
+        className="text-5xl"
         />
       </div>
     </div>

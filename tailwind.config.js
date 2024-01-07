@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        grosa: ['var(--font-grosa)']
+        Rossa: ['Rossa'],
+        Lemon: ['Lemon']
       },
     },
   },

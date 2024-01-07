@@ -4,7 +4,7 @@ import { connectToDatabase } from "@/lib/db";
 import Product from "@/lib/models/Product"
 
 
-export const getProducts = async (page = 1, limit = 6, query, category, brand, sort) => {
+export const getProducts = async (page = 1, limit = 9, query, category, brand, sort) => {
 
     await connectToDatabase()
 

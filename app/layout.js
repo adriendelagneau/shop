@@ -4,17 +4,7 @@ import AuthProvider from '@/components/providers/AuthProvider'
 import SmoothScrolling from '@/components/providers/LennisProvider'
 
 
-import localFont from 'next/font/local';
 
-const grosa = localFont({
-
-  src: [
-    {
-      path: '../public/font/BodoniFLF-Roman.ttf',
-    },
-  ],
-  variable: '--font-grosa',
-});
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -25,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable}`}>
-      <body  className={`${inter.variable} ${grosa.variable}`}>
+      <body  className={`${inter.variable} `}>
         <AuthProvider>
         <SmoothScrolling>
             {children}

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import ProductCard from "./ProductCard"
 
 
 
@@ -14,15 +15,14 @@ const Collection = ({
   return (
     <>
   
-      <div className="flex flex-col items-center gap-10 min-h-screen">
-        <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
+      <div className="">
+        <ul className="grid justify-center grid-cols-1 mx-auto mt-10 mb-5 w-fit lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14">
           {data.map((product, i) => {
          
 
             return (
-              <li key={i} className="flex justify-center">
-                <div className="w-[400px] h-[400px] bg-pink-800">{product.name}</div>
-                <button><Link href={`/product/${product._id}`} className="w-full h-full">voir</Link></button>
+              <li key={i} className="">
+                <ProductCard productData={product} />
               </li>
             )
           })}

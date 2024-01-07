@@ -9,7 +9,7 @@ import React from 'react'
 const ProductPage = async ({ searchParams }) => {
 
   const page = 1
-  const limit = 6
+  const limit = 9
   const query = searchParams?.query || ""
   const category = searchParams?.category || ""
   const brand = searchParams?.brand || ""
@@ -26,19 +26,13 @@ const ProductPage = async ({ searchParams }) => {
 
   return (
     <div >
-      <div>ProductPage</div>
 
       <SelectorComponent categoryText={category} brandText={brand} sortText={sort} />
       <SearchCompoent queryText={query} />
 
       <Collection
         data={data?.products}
-        emptyTitle="No products Found"
-        emptyStateSubtext="Come back later"
-        collectionType="All"
-        limit={3}
-        page={page}
-        totalPages={data?.totalPages}
+
       />
 
       <InfinitScroll totalPages={data?.totalPages} />

@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import { getProducts } from '@/app/_productsActions';
+import ProductCard from './ProductCard';
 
 let page = 2;
 
@@ -14,7 +15,7 @@ const InfinitScroll = ({ totalPages }) => {
   const [data, setData] = useState([]);
 
   // Extract pagination and filtering parameters from searchParams
-  const limit = 6;
+  const limit = 9;
   const query = searchParams?.get("query") || "";
   const category = searchParams?.get("category") || "";
   const brand = searchParams?.get("brand") || "";
@@ -39,12 +40,12 @@ const InfinitScroll = ({ totalPages }) => {
   }, [searchParams]);
 
   return (
-    <>
+    <div className='flex m-auto mt-5 max-w-screen-2xl'>
       {/* Render product items */}
-      <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
+      <ul className="grid justify-center grid-cols-1 mx-auto mt-10 mb-5 w-fit lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14">
         {data.map((product, index) => (
           <li key={index} className="flex justify-center">
-            <div className="w-[400px] h-[400px] bg-pink-800">{product.name}</div>
+            <ProductCard productData={product} />
           </li>
         ))}
       </ul>
@@ -61,7 +62,7 @@ const InfinitScroll = ({ totalPages }) => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 }
 
