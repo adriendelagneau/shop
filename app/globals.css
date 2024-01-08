@@ -60,10 +60,10 @@ button {
     /* Add more styles as needed */
   }
   
-  .img1{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1667470248/shoes/lindsay-henwood-7_kRuX1hSXM-unsplash_b8rhuz_zvfjgn.jpg"); }
-  .img2{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1704717513/shoes/people-crossing-street-surrounded-by-buildings-shops_pcle3c.jpg"); }
-  .img3{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1667470248/shoes/janko-ferlic-jjDqU0P0-SM-unsplash_x6pqxr_sgrmol.jpg"); }
-  
+  .img1{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1704735940/shoes/alphacolor-XdDyRTVo-iw-unsplash_zgn4nd.jpg"); }
+  .img2{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1704732959/shoes/daniel-romero-6V5vTuoeCZg-unsplash_f6d3mr.jpg"); }  
+  .img3{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1704736216/shoes/eliott-van-buggenhout-ALf_DGUsgro-unsplash_igssqo.jpg"); }
+  .img4{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1704735641/shoes/smart-watch-6482245_1280_ujjksl.jpg"); }
   .img{
  
     border:1px solid #222;

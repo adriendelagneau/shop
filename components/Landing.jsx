@@ -18,7 +18,7 @@ const Landing = () => {
 
         <div className='w-full lg:w-1/2 lg:flex lg:items-center lg:justify-center lg:h-full'>
           <Image
-            src='https://res.cloudinary.com/dos8mey8r/image/upload/v1704549722/shoes/removal.ai__638aa178-7607-43b8-aa19-d22f805e5176-tst-extra_large-507x507-pad-600x600-f8f8f8_e1fuwv.png'
+            src='https://res.cloudinary.com/dos8mey8r/image/upload/v1704730711/klipartz.com_vxxufp.png'
             alt="colored grafitti airmax"
             width={570}
             height={570}
