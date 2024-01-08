@@ -15,7 +15,7 @@
 
 button {
   border: none;
-  background-color: #0056b3;
+  background-color: rgb(28 25 23 );
   color: white;
   padding: 8px 10px;
   cursor: pointer;
@@ -50,9 +50,8 @@ button {
       height: 100%;
       border:1px solid #222;
       margin: 0 2px;
-      background-size: cover;
       background-position: center;
-      position: relative;
+
     }
     .img:hover{
       flex: 5;
@@ -62,8 +61,7 @@ button {
   }
   
   .img1{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1667470248/shoes/lindsay-henwood-7_kRuX1hSXM-unsplash_b8rhuz_zvfjgn.jpg"); }
-  
-  .img2{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1704713358/shoes/people-crossing-street-surrounded-by-buildings-shops_poc1t1.jpg"); }
+  .img2{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1704717513/shoes/people-crossing-street-surrounded-by-buildings-shops_pcle3c.jpg"); }
   .img3{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1667470248/shoes/janko-ferlic-jjDqU0P0-SM-unsplash_x6pqxr_sgrmol.jpg"); }
   
   .img{

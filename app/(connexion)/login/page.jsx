@@ -30,7 +30,7 @@ const Login = () => {
           <div className="relative mt-6">
             <input
               type="email"
-              className="relative z-10 w-full p-2 bg-transparent border-2 rounded-lg outline-none peer focus:border-blue-900 placeholder:text-transparent"
+              className="relative z-10 w-full p-2 bg-transparent border-2 rounded-lg outline-none peer focus:border-stone-900 placeholder:text-transparent"
               id="email"
               placeholder="email"
               name='email'
@@ -46,14 +46,14 @@ const Login = () => {
                 }
               })}
             />
-            <label htmlFor="email" className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-blue-800 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm">Email</label>
+            <label htmlFor="email" className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-stone-900 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm">Email</label>
             <p className='w-full h-5 pt-1 text-red-800'>{errors.email?.message}</p>
           </div>
 
           <div className="relative mt-6">
             <input
               type={isPasswordVisible ? 'text' : 'password'}
-              className="relative z-10 w-full p-2 pr-8 bg-transparent border-2 rounded-lg outline-none peer focus:border-blue-900 placeholder:text-transparent"
+              className="relative z-10 w-full p-2 pr-8 bg-transparent border-2 rounded-lg outline-none peer focus:border-stone-900 placeholder:text-transparent"
               id="password"
               placeholder="password"
               name='password'
@@ -69,7 +69,7 @@ const Login = () => {
                 }
               })}
             />
-            <label htmlFor="password" className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-blue-800 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm">Password</label>
+            <label htmlFor="password" className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-stone-900 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm">Password</label>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -88,7 +88,7 @@ const Login = () => {
             <p className="w-full h-5 pt-1 text-red-800 ">{errors.password?.message}</p>
           </div>
 
-          <RippleButton type={"submit"} text={"Login"} buttonClasses={"w-full mt-10 text-xl rounded-md bg-blue-700 "} />
+          <RippleButton type={"submit"} text={"Login"} buttonClasses={"w-full mt-10 text-xl rounded-md bg-stone-900 "} />
        
         </form>
 
@@ -97,7 +97,7 @@ const Login = () => {
 
       </div>
 
-      <Link className="mt-6 hover:text-blue-900 text-md" href="/register">No account yet, REGISTER</Link>
+      <Link className="mt-6 hover:text-stone-900 text-md" href="/register">No account yet, REGISTER</Link>
       <div onClick={() => setForgotPasswordVisible(!forgotPasswordVisible)}>forgot password ?</div>
       {
         forgotPasswordVisible && (

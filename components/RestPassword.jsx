@@ -40,7 +40,7 @@ const RestPassword = ({token}) => {
 <div className="relative mt-6">
   <input
     type={isPasswordVisible ? 'text' : 'password'}
-    className="relative z-10 w-full p-2 pr-8 bg-transparent border-2 rounded-lg outline-none peer focus:border-blue-900 placeholder:text-transparent"
+    className="relative z-10 w-full p-2 pr-8 bg-transparent border-2 rounded-lg outline-none peer focus:border-stone-900 placeholder:text-transparent"
     id="password"
     placeholder="password"
     name='password'
@@ -56,7 +56,7 @@ const RestPassword = ({token}) => {
       }
     })}
   />
-  <label htmlFor="password" className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-blue-800 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm">Password</label>
+  <label htmlFor="password" className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-stone-900 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm">Password</label>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -79,7 +79,7 @@ const RestPassword = ({token}) => {
                 <div className="relative mt-6">
   <input
     type={isPasswordVisible ? 'text' : 'password'}
-    className="relative z-10 w-full p-2 pr-8 bg-transparent border-2 rounded-lg outline-none peer focus:border-blue-900 placeholder:text-transparent"
+    className="relative z-10 w-full p-2 pr-8 bg-transparent border-2 rounded-lg outline-none peer focus:border-stone-900 placeholder:text-transparent"
     id="passwordConfirm"
     placeholder="password confirm"
     name='passwordConfirm'
@@ -95,7 +95,7 @@ const RestPassword = ({token}) => {
       }
     })}
   />
-  <label htmlFor="passwordConfirm" className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-blue-800 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm">Password</label>
+  <label htmlFor="passwordConfirm" className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-stone-900 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm">Password</label>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -114,7 +114,7 @@ const RestPassword = ({token}) => {
   <p className="w-full h-5 pt-1 text-red-800 ">{errors.passwordConfirm?.message}</p>
 </div>
 
-<RippleButton type={"submit"} text={"change password"} buttonClasses={"w-full mt-10 text-xl rounded-md bg-blue-700 "} />
+<RippleButton type={"submit"} text={"change password"} buttonClasses={"w-full mt-10 text-xl rounded-md bg-stone-900 "} />
 </form>
         </>
 

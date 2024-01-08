@@ -38,7 +38,7 @@ const Register = () => {
         <div className="relative mt-6">
           <input
             type="text"
-            className="relative z-10 w-full p-2 bg-transparent border-2 rounded-lg outline-none peer focus:border-blue-900 placeholder:text-transparent"
+            className="relative z-10 w-full p-2 bg-transparent border-2 rounded-lg outline-none peer focus:border-stone-900 placeholder:text-transparent"
             id="text1"
             placeholder="name"
             name="name"
@@ -56,7 +56,7 @@ const Register = () => {
           />
           <label
             htmlFor="text1"
-            className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-blue-800 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm"
+            className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-stone-900 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm"
           >
             Name
           </label>
@@ -66,7 +66,7 @@ const Register = () => {
         <div className="relative mt-6">
           <input
             type="email"
-            className="relative z-10 w-full p-2 bg-transparent border-2 rounded-lg outline-none peer focus:border-blue-900 placeholder:text-transparent"
+            className="relative z-10 w-full p-2 bg-transparent border-2 rounded-lg outline-none peer focus:border-stone-900 placeholder:text-transparent"
             id="email"
             placeholder="email"
             name="email"
@@ -84,7 +84,7 @@ const Register = () => {
           />
           <label
             htmlFor="email"
-            className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-blue-800 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm"
+            className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-stone-900 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm"
           >
             Email
           </label>
@@ -96,7 +96,7 @@ const Register = () => {
         <div className="relative mt-6">
           <input
             type={isPasswordVisible ? "text" : "password"}
-            className="relative z-10 w-full p-2 pr-8 bg-transparent border-2 rounded-lg outline-none peer focus:border-blue-900 placeholder:text-transparent"
+            className="relative z-10 w-full p-2 pr-8 bg-transparent border-2 rounded-lg outline-none peer focus:border-stone-900 placeholder:text-transparent"
             id="password"
             placeholder="password"
             name="password"
@@ -114,7 +114,7 @@ const Register = () => {
           />
           <label
             htmlFor="password"
-            className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-blue-800 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm"
+            className="absolute z-20 px-1 text-sm text-gray-600 transition-all bg-white left-2 peer-placeholder-shown:top-3 peer-focus:-top-2 -top-2 peer-focus:text-stone-900 peer-placeholder-shown:-z-10 peer-focus:z-20 peer-placeholder-shown:text-base peer-focus:text-sm"
           >
             Password
           </label>
@@ -148,13 +148,13 @@ const Register = () => {
 
         <RippleButton
           text={isLoading ? "Loading..." : "Register"}
-          buttonClasses={"w-full mt-10 text-xl rounded-md bg-blue-700"}
+          buttonClasses={"w-full mt-10 text-xl rounded-md bg-stone-900"}
           type="submit"
           disabled={isLoading}
         />
       </form>
 
-      <Link href="/login" className="mt-9 hover:text-blue-900 text-md">
+      <Link href="/login" className="mt-9 hover:text-stone-900 text-md">
         Already an account? LOGIN.
       </Link>
     </div>

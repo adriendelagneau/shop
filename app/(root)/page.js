@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div>
       <Landing />
-      <div className='h-screen '></div>
+    
 <CategoryComponent />
       
       <Link href={"/products"}>All Products</Link>
