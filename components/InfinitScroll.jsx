@@ -15,7 +15,7 @@ const InfinitScroll = ({ totalPages }) => {
   const [data, setData] = useState([]);
 
   // Extract pagination and filtering parameters from searchParams
-  const limit = 9;
+  const limit = 12;
   const query = searchParams?.get("query") || "";
   const category = searchParams?.get("category") || "";
   const brand = searchParams?.get("brand") || "";

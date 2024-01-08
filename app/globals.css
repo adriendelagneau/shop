@@ -33,20 +33,39 @@ button {
 
 
   /* acordion */
-  .img:hover{
-    flex: 5;
-  }
+  
+  
   .img{
-    height: 100%;
-    border:1px solid #222;
-    margin: 0 2px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
+
+  }
+  
+  @media only screen and (min-width: 1280px) {
+    /* Your styles for 1024 pixels and wider go here */
+    .img {
+      height: 100%;
+      border:1px solid #222;
+      margin: 0 2px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .img:hover{
+      flex: 5;
+    }
+    
+    /* Add more styles as needed */
   }
   
   .img1{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1667470248/shoes/lindsay-henwood-7_kRuX1hSXM-unsplash_b8rhuz_zvfjgn.jpg"); }
+  
   .img2{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1667470248/shoes/paul-volkmer-updW-QUccFE-unsplash_twqeiu_hokbdd.jpg"); }
   .img3{ background-image: url("https://res.cloudinary.com/dos8mey8r/image/upload/v1667470248/shoes/janko-ferlic-jjDqU0P0-SM-unsplash_x6pqxr_sgrmol.jpg"); }
   
+  .img{
+ 
+    border:1px solid #222;
 
+    background-size: cover;
+    
+    position: relative;
+  }

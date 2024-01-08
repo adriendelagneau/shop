@@ -4,7 +4,7 @@ import { connectToDatabase } from "@/lib/db";
 import Product from "@/lib/models/Product"
 
 
-export const getProducts = async (page = 1, limit = 9, query, category, brand, sort) => {
+export const getProducts = async (page = 1, limit = 12, query, category, brand, sort) => {
 
     await connectToDatabase()
 
@@ -45,7 +45,6 @@ export const getProducts = async (page = 1, limit = 9, query, category, brand, s
             sortOptions = { createdAt: 1 }; // Default sorting by createdAt in ascending order
         }
         
-      //  console.log(skipCount, "sk")
         // Use the combined filter and sort objects in the find query
         const allResult = await Product.find(combinedFilter);
         
@@ -67,10 +66,8 @@ export const getProducts = async (page = 1, limit = 9, query, category, brand, s
 };
 
 
-
 export const getProductById = async (id) => {
 
-   
     await connectToDatabase();
 
     try {

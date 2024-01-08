@@ -9,7 +9,7 @@ import React from 'react'
 const ProductPage = async ({ searchParams }) => {
 
   const page = 1
-  const limit = 9
+  const limit = 12
   const query = searchParams?.query || ""
   const category = searchParams?.category || ""
   const brand = searchParams?.brand || ""
