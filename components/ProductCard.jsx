@@ -1,11 +1,13 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const ProductCard = ({ productData }) => {
 
   return (
+   
     <div className="duration-500 bg-white shadow-md w-72 rounded-xl hover:scale-105 hover:shadow-xl">
-      <a href="#">
+    <Link href={`/product/${productData._id}`}>
         <Image width={768} height={500} src={productData.image}
           alt="Product" className="object-cover rounded-t-xl" />
         <div className="px-4 py-3 w-72">
@@ -25,7 +27,7 @@ const ProductCard = ({ productData }) => {
             </svg></div>
           </div>
         </div>
-      </a>
+                </Link>
     </div>
   )
 }
