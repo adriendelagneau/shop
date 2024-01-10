@@ -33,11 +33,14 @@ const Header = () => {
                 <Link href={"/"} className='hidden w-1/4 sm:inline-block'>logo</Link>
                 <Link href={"/"} className='w-1/2 text-xl font-Lemon sm:text-center sm:text-3xl'>Electro Place</Link>
                 <ul className='flex items-center justify-end w-1/4 gap-4'>
-                    <li>
-                        {session?.user ? (
+                    <li>   {session?.user ? (
                             <Link href={"/profile"}>profile</Link>
                         ) : (
                             <Link href={"/register"}>login</Link>
+                        )}</li>
+                    <li>
+                        {session?.user.role === "admin" && (
+                            <Link href={"/admin"}>admin</Link>
                         )}
                     </li>
                     <li>

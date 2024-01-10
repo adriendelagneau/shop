@@ -1,6 +1,6 @@
 import CategoryComponent from '@/components/CategoryComponent'
 import Landing from '@/components/Landing'
-import Link from 'next/link'
+import Test from '@/components/Test'
 import React from 'react'
 
 
@@ -10,9 +10,9 @@ const Home = () => {
     <div className=''>
       <Landing />
     
-<CategoryComponent />
-      
-      <Link href={"/products"}>All Products</Link>
+      <CategoryComponent />
+
+ 
     </div>
   )
 }

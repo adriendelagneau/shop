@@ -43,7 +43,7 @@ export default function CheckoutButton() {
         <button
             onClick={() => cart.length > 0 && redirectToCheckout()}
             disabled={cart.length === 0}
-            className="px-6 py-3 mr-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-sky-900 hover:bg-sky-700 disabled:bg-gray-600">
+            className="w-full px-6 py-3 mr-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-stone-900 hover:bg-stone-800 disabled:bg-gray-600">
             Checkout
         </button>
     );

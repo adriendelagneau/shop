@@ -24,6 +24,7 @@ const ProductPage = async ({ searchParams }) => {
     sort
   );
 
+  console.log(data)
   return (
     <div >
 

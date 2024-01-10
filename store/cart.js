@@ -52,7 +52,18 @@ export const useCartStore = create(
 
       getTotalPrice: () =>
         get().cart.reduce((total, item) => total + item.price * item.quantity, 0),
+      
+      
+        setQuantity: (itemId, quantity) =>
+        set({
+          cart: get().cart.map((item) =>
+            item._id === itemId ? { ...item, quantity: quantity } : item
+          ),
+        }),
     }),
+
+
+    
     {
       name: 'cart-storage',
       skipHydration: true,

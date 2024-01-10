@@ -7,7 +7,7 @@ const CartTotalPrice = () => {
     const totalPrice = useCartStore((state) => state.getTotalPrice());
 
   return (
-    <div>Total price: {totalPrice}</div>
+    <div>{totalPrice}</div>
   )
 }
 
