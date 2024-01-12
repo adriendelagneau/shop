@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useCartStore } from "@/store/cart"
 import { X } from 'lucide-react';
+import Image from 'next/image';
 
 const CartCard = ({ productDetails }) => {
 
@@ -19,8 +20,8 @@ const CartCard = ({ productDetails }) => {
     return (
         <li className="flex justify-between w-full py-6">
             <div className='flex justify-between'>
-                <div className="w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
-                    <img src={productDetails.image[0]} />
+                <div className="overflow-hidden border border-gray-200 rounded-md ">
+                    <Image src={productDetails.image[0]} width={80} height={80} alt={`${productDetails.name}` } />
                 </div>
                 <div >
                     <div className="ml-4 text-base font-medium text-gray-900">

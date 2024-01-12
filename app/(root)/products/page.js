@@ -28,8 +28,8 @@ const ProductPage = async ({ searchParams }) => {
   return (
     <div >
 
-      <SelectorComponent categoryText={category} brandText={brand} sortText={sort} />
       <SearchCompoent queryText={query} />
+      <SelectorComponent categoryText={category}  sortText={sort} />
 
       <Collection
         data={data?.products}

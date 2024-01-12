@@ -2,6 +2,7 @@
 
 import { useCartStore } from '@/store/cart';
 import React from 'react'
+import RippleButton from './RippleButton';
 
 const AddToCartButton = ({ product }) => {
     const addToCart = useCartStore((state) => state.addToCart);
@@ -19,9 +20,8 @@ const AddToCartButton = ({ product }) => {
   };
 
   return (
-    <button onClick={handleAddToCart}>
-    Add to Cart
-  </button>
+    <RippleButton type={"submit"} text={"Add To Cart"} buttonClasses={"w-full mt-10 text-xl rounded-md bg-stone-900  lg:w-[250px]"}  onClick={handleAddToCart} />
+
   )
 }
 

@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import CartIcon from './CartIcon'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 
 const Header = () => {
     const { data: session, status } = useSession()
@@ -30,8 +31,10 @@ const Header = () => {
         <header className={`w-full text-white bg-stone-900 transition-all fixed top-0 h-[60px] z-50
             ${!visible && 'top-[-60px]'}`}>
             <nav className='flex items-center justify-between w-full h-full px-4 py-2'>
-                <Link href={"/"} className='hidden w-1/4 sm:inline-block'>logo</Link>
-                <Link href={"/"} className='w-1/2 text-xl font-Lemon sm:text-center sm:text-3xl'>Electro Place</Link>
+                <Link href={"/"} className='hidden w-1/4 sm:inline-block'>
+                    <Image src={"/Untitled.png"} width={50} height={50} alt='' />
+                </Link>
+                <Link href={"/"} className='w-1/2 text-xl font-Lemon sm:text-center sm:text-3xl'>Electro Store</Link>
                 <ul className='flex items-center justify-end w-1/4 gap-4'>
                     <li>   {session?.user ? (
                             <Link href={"/profile"}>profile</Link>
