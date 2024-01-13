@@ -23,15 +23,15 @@ const ProductPage = async ({ params: { id } }) => {
           <div className='flex flex-col gap-6 capitalize'>
           <h2 className='text-3xl md:text-4xl 2xl:text-5xl'>{product.name}</h2>
             <p className='text-xl text-gray-500 '>{product.brand}</p>
-          <p className='text-xl '>desc: {product.description}</p>
+          <p className='text-xl '>{product.description}</p>
             
 
           </div>
           <div className=''>
 
-            <div className='flex gap-8 mb-8 text-2xl lg:text-3xl'>
+            <div className='flex gap-8 my-4 text-2xl lg:text-3xl'>
             <p>{product.price} €</p>
-            <del className='text-red-700'>{product.oldPrice} €</del>
+            <del className='text-red-700'>{product.oldPrice}</del>
             </div>
             <AddToCartButton product={product} />
           </div>

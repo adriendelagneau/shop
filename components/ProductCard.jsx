@@ -6,7 +6,7 @@ const ProductCard = ({ productData }) => {
 
   return (
    
-    <div className="duration-500 bg-white shadow-md w-72 rounded-xl hover:scale-105 hover:shadow-xl">
+    <div className="duration-500 bg-white border shadow-md w-72 rounded-xl hover:scale-105 hover:shadow-xl">
     <Link href={`/product/${productData._id}`}>
         <Image width={768} height={500} src={productData.image[0]}
           alt="Product" className="object-cover rounded-t-xl" />

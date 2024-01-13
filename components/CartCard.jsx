@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useCartStore } from "@/store/cart"
 import { X } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CartCard = ({ productDetails }) => {
 
@@ -19,20 +20,23 @@ const CartCard = ({ productDetails }) => {
 
     return (
         <li className="flex justify-between w-full py-6">
-            <div className='flex justify-between'>
+            
+                <Link href={`/product/${productDetails._id}`} className='flex justify-between'>
+                    
                 <div className="overflow-hidden border border-gray-200 rounded-md ">
                     <Image src={productDetails.image[0]} width={80} height={80} alt={`${productDetails.name}` } />
                 </div>
                 <div >
                     <div className="ml-4 text-base font-medium text-gray-900">
                         <h3>
-                            <a href="#">{productDetails.name}</a>
+                            <p>{productDetails.name}</p>
                         </h3>
                     <p className="mt-1 text-sm text-gray-500">beats</p>
                         <p className="">{productDetails.quantity * productDetails.price} €</p>
                     </div>
                 </div>
-            </div>
+                </Link>
+        
             <select value={qty} onChange={handleQuantityChange} className='h-10 border outline-none bg-inherit'>
 
                 {[...Array(10).keys()].map((num) => (
